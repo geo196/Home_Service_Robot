@@ -7,7 +7,7 @@ The last project of the Udacity Nanodegree Program Robotics Software Engineer. I
 2. Description
 
 The project directories are the following:
-```                                                      
+```
 ── Home_Service_Robot
    ├── src
    |   ├── add_markers
@@ -38,4 +38,35 @@ The project directories are the following:
    │       └── test_slam.sh
    └── README.md 
 ```
+
+We need to import and install a few more packages the simulation of the project:
+- gmapping: http://wiki.ros.org/gmapping
+- turtlebot_teleop: http://wiki.ros.org/turtlebot_teleop
+- turtlebot_rviz_launchers: http://wiki.ros.org/turtlebot_rviz_launchers
+- turtlebot_gazebo: http://wiki.ros.org/turtlebot_gazebo
+
+Also the following are important too:
+```
+$ sudo apt install ros-kineti-turtlebot
+$ sudo apt install ros-kineti-turtlebot-gazebo
+$ sudo apt install ros-kineti-turtlebot-navigation
+$ sudo apt install ros-kineti-turtlebot-interactions
+```
+
+
+3. How to build the project
+
+Build the project using the following commands:
+```
+$ cd /home/workspace/
+$ catkin_make
+$ source devel/setup.bash
+```
+
+After building the project we must open a command window in the scripts directory:
+```
+$ chmod +x <file>.sh
+$ ./<file>.sh
+```
+Now the project is running.
 
