@@ -1,7 +1,6 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
 #include "nav_msgs/Odometry.h"
-//#include <tf/tf.h>
 #include <math.h>
 
 float odom_x = 0.0, odom_y = 0.0;
@@ -25,7 +24,7 @@ int main( int argc, char** argv )
   uint32_t shape = visualization_msgs::Marker::SPHERE;
   float goals[2][3] = { {1.0, 0.0, 1.0}, {5.0, -2.0, 1.0}  };
 
-  bool have_thing = false;
+  bool pick_object = false;
   visualization_msgs::Marker marker;
   // Set the frame ID and timestamp.  See the TF tutorials for information on these.
   marker.header.frame_id = "map";
@@ -83,7 +82,7 @@ int main( int argc, char** argv )
     float tolerance = 0.7;
     ROS_INFO("Odom data: %f, %f", odom_x, odom_y);
 
-    if (!have_thing)
+    if (!pick_object)
     {
       marker_pub.publish(marker);
       x_distance = fabs(marker.pose.position.x - odom_x);
@@ -93,7 +92,7 @@ int main( int argc, char** argv )
       {
         marker.action = visualization_msgs::Marker::DELETE;
         marker_pub.publish(marker);
-        have_thing = true;
+        pick_object = true;
         ROS_INFO("Object picked");
       }
     }
@@ -109,14 +108,7 @@ int main( int argc, char** argv )
       marker_pub.publish(marker);
       if( (x_distance < tolerance) && (y_distance < tolerance) )
       {
-//        marker.action = visualization_msgs::Marker::ADD;
-//        marker.pose.position.x = goals[1][0];
-//        marker.pose.position.y = goals[1][1];
-//        marker.pose.orientation.w = goals[1][2];
-
-//        marker.pose.position.z = 0.0;
-//        marker.pose.orientation = tf::createQuaternionMsgFromYaw(goals[1][2]);
-marker.action = visualization_msgs::Marker::DELETE;
+        marker.action = visualization_msgs::Marker::DELETE;
         marker_pub.publish(marker);
         ROS_INFO("Object dropped off");
       }
