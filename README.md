@@ -39,7 +39,7 @@ The project directories are the following:
    └── README.md 
 ```
 
-We need to import and install a few more packages the simulation of the project:
+We need to import and install a few more packages for the simulation of the project:
 - gmapping: http://wiki.ros.org/gmapping
 - turtlebot_teleop: http://wiki.ros.org/turtlebot_teleop
 - turtlebot_rviz_launchers: http://wiki.ros.org/turtlebot_rviz_launchers
